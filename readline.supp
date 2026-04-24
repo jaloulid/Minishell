@@ -1,0 +1,92 @@
+# Suppress readline leaks
+{
+   readline_malloc
+   Memcheck:Leak
+   match-leak-kinds: definite,indirect,possible,reachable
+   ...
+   fun:malloc
+   ...
+   obj:*/libreadline.so*
+}
+{
+   readline_realloc
+   Memcheck:Leak
+   match-leak-kinds: definite,indirect,possible,reachable
+   ...
+   fun:realloc
+   ...
+   obj:*/libreadline.so*
+}
+{
+   readline_calloc
+   Memcheck:Leak
+   match-leak-kinds: definite,indirect,possible,reachable
+   ...
+   fun:calloc
+   ...
+   obj:*/libreadline.so*
+}
+{
+   readline_function
+   Memcheck:Leak
+   match-leak-kinds: definite,indirect,possible,reachable
+   ...
+   fun:readline
+}
+{
+   add_history_function
+   Memcheck:Leak
+   match-leak-kinds: definite,indirect,possible,reachable
+   ...
+   fun:add_history
+}
+{
+   history_functions
+   Memcheck:Leak
+   match-leak-kinds: definite,indirect,possible,reachable
+   ...
+   fun:*history*
+}
+{
+   rl_functions
+   Memcheck:Leak
+   match-leak-kinds: definite,indirect,possible,reachable
+   ...
+   fun:rl_*
+}
+{
+   tgetent_leak
+   Memcheck:Leak
+   match-leak-kinds: definite,indirect,possible,reachable
+   ...
+   fun:tgetent
+}
+{
+   termcap_leak
+   Memcheck:Leak
+   match-leak-kinds: definite,indirect,possible,reachable
+   ...
+   obj:*/libtinfo.so*
+}
+{
+   ncurses_leak
+   Memcheck:Leak
+   match-leak-kinds: definite,indirect,possible,reachable
+   ...
+   obj:*/libncurses.so*
+}
+
+{
+   readline_still_reachable
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libreadline.so*
+}
+
+{
+   history_leaks
+   Memcheck:Leak
+   ...
+   obj:*/libhistory.so*
+}
